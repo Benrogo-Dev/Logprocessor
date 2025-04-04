@@ -21,7 +21,7 @@ def fast_merge(dict[str, dict[str, int]] new_metrics, dict[str, dict[str, int]] 
 
         for key in sub_new:
             # Using int64_t here bypasses Python's integer handling
-            value = <int64_t>sub_new[key] + <int64_t>sub_results[key]
+            value = <int64_t>sub_new[key] + <int64_t>sub_results.get(key, 0)
 
             # Update the result directly without any overhead
             sub_results[key] = value
