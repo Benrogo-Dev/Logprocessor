@@ -1,5 +1,5 @@
 # type: ignore
-from setuptools import setup 
+from setuptools import setup , find_packages
 from glob import glob
 import os
 
@@ -25,6 +25,6 @@ cmdclass = {"build_ext": build_ext} if USING_CYTHON else {}
 setup(
     ext_modules=extensions,
     cmdclass=cmdclass,
-    packages = ["logprocessor"],
+    packages = find_packages(),
     test_suite="tests"
 )
