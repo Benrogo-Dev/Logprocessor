@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools >= 77.0.3"]
+requires = ["setuptools >= 77.0.3", "setuptools_scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -43,3 +43,5 @@ minversion = "6.0"
 testpaths = [
     "tests"
 ]
+
+[tool.setuptools_scm]

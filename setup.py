@@ -22,11 +22,6 @@ for source in sources]
 cmdclass = {"build_ext": build_ext} if USING_CYTHON else {}
 
 setup(
-    name="logprocessor",
-    version="1.0.0",
-    author="Ben_Da_Builder",
-    author_email="ben@benrogo.net",
-    description="A modular, python-based log metrics processor.",
     ext_modules=extensions,
     cmdclass=cmdclass,
     packages = ["logprocessor"],
