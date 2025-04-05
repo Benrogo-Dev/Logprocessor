@@ -22,7 +22,7 @@ jobs:
         build
         --user
     - name: Build a binary wheel and a source tarball
-      run: python3 -m build
+      run: python3 -m build --sdist
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:
@@ -77,7 +77,6 @@ jobs:
       with:
         inputs: >-
           ./dist/*.tar.gz
-          ./dist/*.whl
     - name: Create GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
