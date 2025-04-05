@@ -8,12 +8,13 @@ try:
     from Cython.Distutils import build_ext
 except ImportError:
     from setuptools import Extension
+    
     USING_CYTHON = False
 else:
     USING_CYTHON = True
 
 filename_ext = "pyx" if USING_CYTHON else "c"
-sources = glob("libs/*.%s" % (filename_ext,))
+sources = glob("logprocessor/libs/*.%s" % (filename_ext,))
 extensions = [
     Extension(source.split(".")[0].replace(os.path.sep, "."),
               sources=[source]
