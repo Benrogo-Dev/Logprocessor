@@ -1,5 +1,6 @@
 from logprocessor.libs.fast_metric_merge import fast_merge
 
+
 # Test that the fast_merge Cython function works.
 def test_fast_merge():
     initial_metrics = {

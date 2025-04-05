@@ -1,16 +1,21 @@
 import abc
 from abc import ABC, abstractmethod
-from functools import partial as partial
 from typing import DefaultDict, Self, Iterable, Any
+
 
 class LogMetrics(ABC, metaclass=abc.ABCMeta):
     @property
     @abstractmethod
     def metrics_template(self) -> list[str]: ...
     metrics: dict[str, DefaultDict[Any, int]]
-    def __init__(self, _metrics: dict[str, DefaultDict[Any, int]] | None = None) -> None: ...
+
+    def __init__(
+        self,
+        _metrics: dict[str, DefaultDict[Any, int]] | None = None
+    ) -> None: ...
     def __add__(self, other: dict | Self) -> Self: ...
     def to_dict(self) -> dict[str, dict[str, int]]: ...
+
 
 class LogMetricsTransformer(ABC, metaclass=abc.ABCMeta):
     @property

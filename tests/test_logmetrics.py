@@ -1,14 +1,17 @@
 import pytest
 from logprocessor.metrics.base_metrics import LogMetrics
 
+
 class ValidMetricsClass1(LogMetrics):
     metrics_template = ["metric"]
+
 
 class ValidMetricsClass2(LogMetrics):
     metrics_template = ["othermetric"]
 
+
 class InvalidMetricsClass(LogMetrics):
-    ... # Missing metrics_template
+    ...  # Missing metrics_template
 
 
 # Test that valid LogMetrics subclasses do
@@ -16,12 +19,14 @@ class InvalidMetricsClass(LogMetrics):
 def test_metrics_init():
     ValidMetricsClass1()
 
+
 # Test that an exception is thrown
 # when a metrics template is not defined.
 def test_no_template():
     with pytest.raises(TypeError):
         InvalidMetricsClass()
-    
+
+
 # Test that invalid types cannot be
 # added to LogMetrics objects.
 def test_invalid_addition():

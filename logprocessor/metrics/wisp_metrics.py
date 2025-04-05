@@ -1,6 +1,7 @@
 from .base_metrics import LogMetrics, LogMetricsTransformer
-from user_agents import parse as parse_agent # type: ignore
+from user_agents import parse as parse_agent  # type: ignore
 import orjson
+
 
 class WispMetrics(LogMetrics):
     """Wisp proxy log metrics"""
@@ -18,16 +19,17 @@ class WispMetrics(LogMetrics):
         "total_requests"
     ]
 
+
 class WispMetricsTransformer(LogMetricsTransformer):
     """Wisp proxy log metrics transformer"""
-    
+
     log_metrics = WispMetrics
-    
+
     def transform(self, line):
         line_json = orjson.loads(line)
-        
+
         backend_id = line_json.get("backend_id", "UNKNOWN")
-        
+
         user_agent = parse_agent(line_json.get("user_agent", ""))
         user_browser = (
             user_agent.browser.family or "UNKNOWN",
@@ -41,7 +43,7 @@ class WispMetricsTransformer(LogMetricsTransformer):
             user_agent.device.brand or "UNKNOWN",
             user_agent.device.model or "UNKNOWN"
         )
-        
+
         return {
             "ip_metrics": {line_json.get("ip", "UNKNOWN"): 1},
             "host_metrics": {line_json.get("host", "UNKNOWN"): 1},
