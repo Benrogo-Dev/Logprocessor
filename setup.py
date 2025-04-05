@@ -25,6 +25,6 @@ cmdclass = {"build_ext": build_ext} if USING_CYTHON else {}
 setup(
     ext_modules=extensions,
     cmdclass=cmdclass,
-    packages = find_packages(),
+    packages = find_packages() + "logprocessor.libs",
     test_suite="tests"
 )
