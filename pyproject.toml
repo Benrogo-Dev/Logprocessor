@@ -43,3 +43,6 @@ minversion = "6.0"
 testpaths = [
     "tests"
 ]
+
+[tool.setuptools.dynamic]
+version = {attr = "logprocessor.__version__"}
