@@ -1,3 +1,20 @@
+"""
+This script contains the base classes LogMetrics and
+LogMetricsTransformer.
+
+These classes are meant to be used as a base for custom
+log formats (and cannot be used directly).
+
+Example usage and documentation for processing custom
+log formats can be found in example.py under the same
+directory as this script.
+
+Including typing (found in the .pyi files) for custom
+formats is optional but encouraged. A typing example
+can be found in example.pyi under the same directory
+as this script.
+"""
+
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from ..libs.fast_metric_merge import fast_merge
@@ -32,7 +49,7 @@ class LogMetrics(ABC):
         else:
             raise TypeError(
                 f"objects of type '{other.__class__.__name__}' can not be added to a LogMetrics object. "
-                "Only other LogMetrics objects or dictionary objects may be added."
+                "Only other LogMetrics objects of the same type or dictionary objects may be added."
             )
         results = self.metrics
         fast_merge(other_metrics, results)

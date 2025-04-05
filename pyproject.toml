@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# Names, descriptions and author information
+name = "logprocessor"
+description = "A fully modular log metrics processor!"
+keywords = ["log", "processor", "modular"]
+authors = [
+    {name = "Ben Rogozinski", email="ben@benrogo.net"}
+]
+
+# PyPI Classifiers
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: System :: Logging",
+    "Topic :: System :: Monitoring",
+    "Topic :: Utilities"
+]
+
+# Documentation and licenses
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+
+# Python version and required dependencies
+dynamic = ["version"]
+requires-python = ">= 3.12"
+dependencies = [
+    "pytest>=7"
+]
+
+[project.scripts]
+logprocessor = "logprocessor.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Benrogo-Dev/Logprocessor"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = [
+    "tests"
+]
